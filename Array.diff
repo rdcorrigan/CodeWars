@@ -7,6 +7,7 @@ If a value is present in b, all of its occurrences must be removed from the othe
 
 arrayDiff([1,2,2,2,3],[2]) == [1,3]
 
+// JavaScript
 function arrayDiff(a, b) {
   for (var i = 0; i < a.length; i++) {
     for (var j = 0; j < b.length; j++) {
@@ -17,4 +18,32 @@ function arrayDiff(a, b) {
     }
   }
   return a;
+}
+
+// Python
+def array_diff(a, b):
+    return [i for i in a if i not in b]
+    
+// Java
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Kata {
+
+  public static int[] arrayDiff(int[] a, int[] b) {
+    ArrayList<Integer> arr = new ArrayList<>();
+    Arrays.sort(b);
+    for (int elem : a) {
+      if (Arrays.binarySearch(b, elem) < 0) {
+        arr.add(elem);
+      }
+    }
+    int[] result = new int[arr.size()];
+    int i = 0;
+    for (int elem : arr) {
+      result[i++] = elem;
+    }
+    return result;
+  }
+
 }
