@@ -19,6 +19,7 @@ senior or open category.
 Example Output
 ["Open", "Open", "Senior", "Open", "Open", "Senior"]
 
+// JavaScript
 function openOrSenior(data){
   var result = [];
   for (var i = 0; i < data.length; i++) {
