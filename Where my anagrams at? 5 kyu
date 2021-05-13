@@ -1,0 +1,38 @@
+What is an anagram? Well, two words are anagrams of each other if they both contain the same letters. For example:
+
+'abba' & 'baab' == true
+
+'abba' & 'bbaa' == true
+
+'abba' & 'abbba' == false
+
+'abba' & 'abca' == false
+Write a function that will find all the anagrams of a word from a list. You will be given two inputs a word and an array with words. You should return an array of all the anagrams or an empty array if there are none. For example:
+
+anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']) => ['aabb', 'bbaa']
+
+anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']) => ['carer', 'racer']
+
+anagrams('laser', ['lazing', 'lazy',  'lacer']) => []
+
+// JavaScript (Solution 1)
+function anagrams(word, words) {
+  var result = [];
+  var arrSort = [];
+  word = word.split('').sort();
+  for (var i = 0; i < words.length; i++) {
+    arrSort.push(words[i].split('').sort());
+    for (var j = 0; j < words[i].length; j++) {
+      if (word.length !== arrSort[i].length) {
+        break;
+      } if (word[j] !== arrSort[i][j]) {
+        break;
+      } if (j === word.length - 1) {
+        result.push(words[i]);
+      }
+    }
+  }
+  return result;
+}
+
+// JavaScript (Solution 2, Optimized)
