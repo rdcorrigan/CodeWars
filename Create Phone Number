@@ -19,8 +19,7 @@ function createPhoneNumber(numbers){
 
 // Python
 def create_phone_number(n):
-    for i in range(len(n)):
-        n[i] = str(n[i])
+    n = [str(i) for i in n]
     arr = ['(',n[0],n[1],n[2],') ',n[3],n[4],n[5],'-',n[6],n[7],n[8],n[9]]
     phone = ''.join(arr)
     return phone
