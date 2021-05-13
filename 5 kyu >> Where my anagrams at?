@@ -36,3 +36,14 @@ function anagrams(word, words) {
 }
 
 // JavaScript (Solution 2, Optimized)
+function anagrams(word, words) {
+  var result = [];
+  var arrSort = [];
+  word = word.split('').sort().join('');
+  for (var i = 0; i < words.length; i++) {
+    arrSort.push(words[i].split('').sort().join(''));
+    if (word === arrSort[i])
+      result.push(words[i]);
+  }
+  return result;
+}
