@@ -41,8 +41,7 @@ function anagrams(word, words) {
   var arrSort = [];
   word = word.split('').sort().join('');
   for (var i = 0; i < words.length; i++) {
-    arrSort.push(words[i].split('').sort().join(''));
-    if (word === arrSort[i])
+    if (word === words[i].split('').sort().join(''))
       result.push(words[i]);
   }
   return result;
