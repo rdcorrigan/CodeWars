@@ -35,8 +35,6 @@ function validParentheses(p){
     if (p[i] == '(') balance++;
     if (p[i] == ')') balance--;
     if (balance < 0) return false;
-    if (i == p.length - 1 && balance != 0)
-      return false;
   }
-  return true;
+  return balance == 0;
 }
