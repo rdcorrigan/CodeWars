@@ -1,0 +1,42 @@
+Write a function that takes a string of parentheses, and determines if the order of the parentheses is valid. The function should return true if the string is valid, and false if it's invalid.
+
+Examples
+"()"              =>  true
+")(()))"          =>  false
+"("               =>  false
+"(())((()())())"  =>  true
+Constraints
+0 <= input.length <= 100
+
+// JavaScript (Solution 1)
+function validParentheses(p){
+  // iterate through and assign +1 to open, -1 to close
+  // if (balance < 0 at any point in loop) break; return false
+  // if (balance != 0) at end loop; return false
+  var balance = 0;
+  for (var i = 0; i < p.length; i++) {
+    if (p[i] === '(') {
+      balance++;
+    } if (p[i] === ')') {
+        balance--;
+    } if (balance < 0) {
+      return false;
+    } if (i === p.length - 1 && balance !== 0){
+      return false;
+    }
+  }
+  return true;
+}
+
+// JavaScript (Solution 2, Refactored)
+function validParentheses(p){
+  var balance = 0;
+  for (var i = 0; i < p.length; i++) {
+    if (p[i] == '(') balance++;
+    if (p[i] == ')') balance--;
+    if (balance < 0) return false;
+    if (i == p.length - 1 && balance != 0)
+      return false;
+  }
+  return true;
+}
