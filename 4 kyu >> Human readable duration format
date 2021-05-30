@@ -28,12 +28,9 @@ specified by of a component must not be greater than any valid more significant 
 
 // JavaScript
 function formatDuration (seconds) {
-  var sec, min, hour, day, year;
-  var time = seconds;
-  var arr = [];
-  var obj = {};
+  if (seconds === 0) return "now";
   
-  if (time === 0) return "now";
+  var sec, min, hour, day, year, time = seconds, arr = [], obj = {};
   
   if (time >= 60) {
     sec = time % 60;
