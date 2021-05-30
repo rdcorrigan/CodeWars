@@ -13,7 +13,7 @@ The most outer function represents the left operand, the most inner function rep
 Division should be integer division. For example, this should return 2, not 2.666666...:
 eight(dividedBy(three()));
 
-// JavaScript
+// JavaScript (NOT MY OWN SOLUTION)
 const zero = (calc) => !calc ? 0 : calc(0);
 const one = (calc) => !calc ? 1 : calc(1);
 const two = (calc) => !calc ? 2 : calc(2);
