@@ -1,0 +1,40 @@
+Your job is to write a function which increments a string, to create a new string.
+
+If the string already ends with a number, the number should be incremented by 1.
+If the string does not end with a number. the number 1 should be appended to the new string.
+Examples:
+
+foo -> foo1
+
+foobar23 -> foobar24
+
+foo0042 -> foo0043
+
+foo9 -> foo10
+
+foo099 -> foo100
+
+Attention: If the number has leading zeros the amount of digits should be considered.
+
+
+// JavaScript
+function incrementString (string) {
+  var end, i, index, num, num2;
+  end = parseInt(string[string.length - 1]);
+  if (!Number.isInteger(end)) return string + "1";
+  for (i = string.length - 1; i >= 0; i--) {
+    if (Number.isInteger(parseInt(string[i]))) {
+      index = i;
+    } else break; }
+  num = string.substring(index);
+  num2 = parseInt(num);
+  num2++;
+  num2 = num2.toString();
+  if (num2.length > num.length) {
+    return string.substring(0, index) + num2;
+  }
+  while (num2.length < num.length) {
+      num2 = "0" + num2;
+  }
+  return string.substring(0, index) + num2;
+}
