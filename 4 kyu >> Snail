@@ -1,0 +1,58 @@
+Snail Sort
+Given an n x n array, return the array elements arranged from outermost elements to the middle element, traveling clockwise.
+
+array = [[1,2,3],
+         [4,5,6],
+         [7,8,9]]
+snail(array) #=> [1,2,3,6,9,8,7,4,5]
+For better understanding, please follow the numbers of the next array consecutively:
+
+array = [[1,2,3],
+         [8,9,4],
+         [7,6,5]]
+snail(array) #=> [1,2,3,4,5,6,7,8,9]
+
+NOTE: The idea is not sort the elements from the lowest value to the highest; the idea is to traverse the 2-d array in a clockwise snailshell pattern.
+
+NOTE 2: The 0x0 (empty matrix) is represented as en empty array inside an array [[]].
+
+
+// JavaScript
+function snail(array) { 
+  var n = array.length, i = 0, top = 0, bottom = n - 1, end = n - 1,
+  arr = [], len = Math.pow(n, 2);
+  if (n < 2) return array[0];
+  function right() {
+    return arr = arr.concat(array[i]);
+  }
+  function down() {
+    i++;
+    if (i - 1 == top && i + 1 == bottom && end < 2) left();
+    while (i < bottom && arr.length < len) {
+      arr.push(array[i][end]);
+      array[i].splice(end, 1);
+      i++;
+    }
+    end--;
+    return arr;
+  }
+  function left() {
+    return arr = arr.concat(array[i].reverse());
+  }
+  function up() {
+    i--;
+    if (i - 1 == top && i + 1 == bottom) right();
+    while (i > top && arr.length < len) {
+      arr.push(array[i][0]);
+      array[i].splice(0, 1);
+      i--;
+    }
+    end--;
+    return arr;
+  }
+  while (arr.length < len) {
+    right(), down(), left(), up();
+    top++, bottom--, i++;
+  }
+  return arr;
+}
